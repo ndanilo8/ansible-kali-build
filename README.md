@@ -32,13 +32,6 @@ cd ./ansible-kali-build
 ansible-galaxy install gantsign.visual-studio-code
 ```
 
-- Create an Encrypted Ansible Vault File with your GitHub Token
-```shell
-ansible-vault create github_token_vault.yml
-# In the text editor that opens, add your GitHub token in the following format:
-github_token: <your_github_api_token_here>
-```
-
 - Finally, run ansible-playbook with your ansible vault
 ```shell
 # get sudo token (valid for 15mins)
