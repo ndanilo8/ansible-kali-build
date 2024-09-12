@@ -1,0 +1,4 @@
+---
+- include_tasks: apt-stuff.yml
+- include_tasks: kerbrute.yml
+- include_tasks: github-repos.yml

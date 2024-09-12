@@ -1,0 +1,9 @@
+---
+- name: "Set terminal and application transparency to 0% in qterminal"
+  ansible.builtin.replace:
+    path: "{{ ansible_env.HOME }}/.config/qterminal.org/qterminal.ini"
+    regexp: '^(TerminalTransparency|ApplicationTransparency)=\d+'
+    replace: '\1=0'
+  become: true
+
+

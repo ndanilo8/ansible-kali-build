@@ -1,0 +1,39 @@
+---
+- name: "Install Tmux"
+  apt:
+    name: tmux
+    state: present
+  become: true
+  become_method: sudo
+
+# copy tmux config file
+- name: "Ensure zsh is installed"
+  ansible.builtin.package:
+    name: zsh
+    state: present
+  become: true
+  become_method: sudo
+
+# copy tmux config file
+- name: "Copying Tmux Config"
+  copy:
+    src: "{{ role_path }}/files/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}"
+
+# set zsh as default shell for user
+- name: "Set zsh as default shell for user"
+  ansible.builtin.user:
+    name: "{{ ansible_env.USER }}"
+    shell: /usr/bin/zsh
+
+# set zsh as default shell for root
+- name: "Set zsh as default shell for root"
+  ansible.builtin.user:
+    name: root
+    shell: /usr/bin/zsh
+  become: true
+  become_method: sudo
+
+
+
+
